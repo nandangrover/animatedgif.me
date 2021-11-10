@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @gif.image_url %>
+
+<p>Uploaded by <%= @gif.user.name %></p>
+<p>
+  <% @gif.tag_list.each do |tag_name| %>
+  <%= link_to tag_name ,root_path(tag: tag_name) %>,
+  <% end %>
+</p>
+
+<p>
+  <strong>Image:</strong> 
+</p>
+
+<%= link_to 'Edit', edit_gif_path(@gif) if user_signed_in? && current_user.id == @gif.user_id %> |
+<%= link_to 'Back', gifs_path %>
